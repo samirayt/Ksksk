@@ -4,6 +4,7 @@ local TextButton = Instance.new("TextButton")
 d.Name = "d"
 d.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 d.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+d.ResetOnSpawn = false
 
 TextButton.Parent = d
 TextButton.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
@@ -23,7 +24,7 @@ TextButton.MouseButton1Click:Connect(function()
     print("Sucesso, remoção de shadown.")
     
     for _, imageLabel in ipairs(game:GetService("Workspace"):GetDescendants()) do
-        if imageLabel:IsA("ImageLabel") then
+        if imageLabel:IsA("ImageLabel") and imageLabel:IsA("Decal") then
             imageLabel:Destroy()
             print("Sucesso, remoção de Image.")
         end
