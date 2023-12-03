@@ -1,1 +1,62 @@
+local d = Instance.new("ScreenGui")
+local TextButton = Instance.new("TextButton")
 
+d.Name = "d"
+d.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+d.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+TextButton.Parent = d
+TextButton.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
+TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.821933985, 0, 0.206692919, 0)
+TextButton.Size = UDim2.new(0, 151, 0, 48)
+TextButton.Font = Enum.Font.Bodoni
+TextButton.Text = "AntiLag-TESTE"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+TextButton.MouseButton1Click:Connect(function()
+    
+    game:GetService("Lighting").GlobalShadows = false
+    print("Sucesso, remoção de shadown.")
+    
+    for _, imageLabel in ipairs(game:GetService("Workspace"):GetDescendants()) do
+        if imageLabel:IsA("ImageLabel") then
+            imageLabel:Destroy()
+            print("Sucesso, remoção de Image.")
+        end
+    end
+
+    for _, part in ipairs(game:GetService("Workspace"):GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Material = Enum.Material.SmoothPlastic
+            print("Sucesso, mapa liso com sucesso 2.")
+        end
+    end
+
+    for _, character in ipairs(game:GetService("Players"):GetPlayers()) do
+        for _, accessory in ipairs(character.Character:GetDescendants()) do
+            if accessory:IsA("Accessory") then
+                accessory:Destroy()
+                print("Sucesso, remoção de acessórios.")
+            end
+        end
+    end
+
+    for _, particleEmitter in ipairs(game:GetService("Workspace"):GetDescendants()) do
+        if particleEmitter:IsA("ParticleEmitter") then
+            particleEmitter:Destroy()
+            print("Sucesso, remoção de partículas.")
+        end
+    end
+
+    for _, part in ipairs(game:GetService("Workspace"):GetDescendants()) do
+        if part:IsA("BasePart") and part:IsA("Model") then
+            part.Material = Enum.Material.SmoothPlastic
+            part.LevelOfDetail = false
+            print("Sucesso, mapa em modo liso.")
+        end
+    end
+end)
